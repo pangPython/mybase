@@ -28,4 +28,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'hello');
+INSERT INTO `user` VALUES ('1', 'pangPython');

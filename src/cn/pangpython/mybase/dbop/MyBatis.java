@@ -10,21 +10,19 @@ import java.io.InputStream;
 
 public class MyBatis {
     public static void main(String[] args) throws IOException {
-        System.out.println("myBatis");
+    }
 
+    public User getUser(int userId) throws IOException {
         String resource = "cn/pangpython/mybase/dbop/mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session = sqlSessionFactory.openSession();
-        User user=null;
+        User user = null;
         try {
             user = (User) session.selectOne("cn.pangpython.mybase.dbop.User.selectUser", 1);
         } finally {
             session.close();
         }
-        System.out.println(user.getId());
-        System.out.println(user.getName());
-
-
+        return user;
     }
 }
