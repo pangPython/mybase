@@ -3,7 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.pangpython.mybase.dbop.User">
+    <!--查询-->
     <select id="selectUser" resultType="cn.pangpython.mybase.dbop.User">
         select * from user where id = #{id}
     </select>
+    <!--插入-->
+    <insert id="insertUser">
+    insert into user (id,name)
+      values (#{id},#{name})
+    </insert>
+    <!--更新-->
+    <update id="updateUser">
+        update user set
+        name = #{name}
+        where id = #{id}
+    </update>
+    <!--删除-->
+    <delete id="deleteUser">
+        delete from user where id = #{id}
+    </delete>
 </mapper>

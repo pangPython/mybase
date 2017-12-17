@@ -1,6 +1,6 @@
 package cn.pangpython.mybase.rpc;
 
-import cn.pangpython.mybase.dbop.MyBatis;
+import cn.pangpython.mybase.dbop.UserDaoImpl;
 import cn.pangpython.mybase.dbop.User;
 
 import java.io.*;
@@ -30,9 +30,9 @@ public class Server {
             //根据传过来的userid去数据库查询user,返回
             String userId = mess.substring(mess.indexOf("=") + 1);
             System.out.println("useris:" + userId);
-            MyBatis myBatis = new MyBatis();
+            UserDaoImpl userDaoImpl = new UserDaoImpl();
             int uid = Integer.parseInt(userId);
-            User user = myBatis.getUser(uid);
+            User user = userDaoImpl.getUser(uid);
             //返回数据
             if (user != null) {
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
