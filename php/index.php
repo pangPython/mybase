@@ -1,3 +1,7 @@
+<?php
+set_time_limit(0);
+require 'RequestData.php';
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,18 +13,10 @@
   </body>
 </html>
 <?php
-$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-//socket_set_option($socket, SOL_SOCKET, SO_SNDTIMEO, array("sec"=>20, "usec"=>0));
-socket_connect($socket, '127.0.0.1', 8089);
-//里面的换行代表 \r\n 注意拷贝的代码后面可能有空格
-$send = <<<EOF
-userid=1\r\n
+$request = new RequestData(8089,'127.0.0.1');
+$data = <<<EOF
+userid=1\n
 EOF;
-echo "send data:'userid=1' to server.<br>";
-socket_write($socket, $send, strlen($send));
-while($str = socket_read($socket, 1024))
-{
-  echo 'receive:<br>';
-  echo $str;
-}
-socket_close($socket);
+
+$rec = $request->send($data);
+echo $rec;
