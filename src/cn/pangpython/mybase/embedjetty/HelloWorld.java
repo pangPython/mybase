@@ -28,7 +28,6 @@ public class HelloWorld extends AbstractHandler {
     {
         Server server = new Server(8080);
         server.setHandler(new HelloWorld());
-
         server.start();
         server.dumpStdErr();
         server.join();
