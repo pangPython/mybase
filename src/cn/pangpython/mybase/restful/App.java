@@ -57,14 +57,14 @@ import java.util.logging.Logger;
  */
 public class App {
 
-    private static final URI BASE_URI = URI.create("http://localhost:8080/base/");
+    private static final URI BASE_URI = URI.create("http://localhost:8080/");
     public static final String ROOT_PATH = "helloworld";
 
     public static void main(String[] args) {
         try {
             System.out.println("\"Hello World\" Jersey Example App");
 
-            final ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
+            final ResourceConfig resourceConfig = new ResourceConfig(MyResource.class);
             final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig, false);
             Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
                 @Override
